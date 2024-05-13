@@ -57,6 +57,17 @@ def check_for_diagonals(player):
         print_field()
         run = False
 
+def check_for_space():
+    global run
+    space = 0
+    for i in field_xy:
+        for j in i:
+            if j != "_":
+                space = space + 1
+                if space == 9:
+                    print("Tie")
+                    run = False
+    
 #main code
 while run:
     current_player = 1
@@ -68,7 +79,8 @@ while run:
     check_for_rows(player1)
     check_for_columns(player1)
     check_for_diagonals(player1)
-        
+    check_for_space()
+
     if not run:
         break
 
@@ -81,3 +93,5 @@ while run:
     check_for_rows(player2)
     check_for_columns(player2)
     check_for_diagonals(player2)
+    check_for_space()
+
